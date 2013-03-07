@@ -53,7 +53,15 @@ def weechat_init
     return Weechat::WEECHAT_RC_ERROR
   end
 
-  Weechat.register("varsko", "komidore64", "0.0.3", "GPL3", "a notify-send script for private messages and highlights", "", "")
+  Weechat.register(
+    "varsko",
+    "komidore64",
+    "0.0.3",
+    "GPL3",
+    "a notify-send script for private messages and highlights",
+    "",
+    ""
+  )
 
   Weechat.hook_print("", "", "", 1, "message_bro", "")
 
