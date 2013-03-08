@@ -48,7 +48,7 @@ end
 # initialization
 #
 def weechat_init
-  if !have_dependencies?
+  unless have_dependencies?
     Weechat.print("'notify-send' command not found")
     return Weechat::WEECHAT_RC_ERROR
   end
@@ -56,7 +56,7 @@ def weechat_init
   Weechat.register(
     "varsko",
     "komidore64",
-    "0.0.3",
+    "0.0.3-1",
     "GPL3",
     "a notify-send script for private messages and highlights",
     "",
@@ -75,10 +75,16 @@ end
 #
 def message_bro(data, buffer, date, tags, visible, highlight, nick, message)
 
+  retval = Weechat::WEECHAT_RC_OK
+
   if is_private_message?(buffer, nick) || is_highlight?(highlight)
-    `notify-send "#{nick}" "#{message}"`
+
+    unless system("notify-send", nick, message)
+      retval = Weechat::WEECHAT_RC_ERROR
+    end
+
   end
 
-  return Weechat::WEECHAT_RC_OK
+  return retval
 end
 # ==============================
