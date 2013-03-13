@@ -21,6 +21,7 @@
 #
 # For this script to work properly, you will need libnotify installed
 
+
 # ==============================
 # helper methods
 #
@@ -56,7 +57,7 @@ def weechat_init
   Weechat.register(
     "varsko",
     "komidore64",
-    "0.0.3-1",
+    "0.0.4",
     "GPL3",
     "a notify-send script for private messages and highlights",
     "",
