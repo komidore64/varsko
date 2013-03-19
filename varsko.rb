@@ -19,7 +19,14 @@
 #
 # "varsko" is Swedish for "notify" or "warn"
 #
-# For this script to work properly, you will need libnotify installed
+# Prerequisites:
+# 1. libnotify installed (or whichever package contains 'notify-send' on your distribution)
+
+TITLE       = "varsko"
+AUTHOR      = "komidore64"
+VERSION     = "0.0.5"
+LICENSE     = "GPL3"
+DESCRIPTION = "a notify-send script for private messages and highlights"
 
 
 # ==============================
@@ -39,10 +46,14 @@ def is_highlight?(hl)
   return (hl == "1")
 end
 
+# do we have 'notify-send' installed?
 def have_dependencies?
   return system("which notify-send > /dev/null 2>&1")
 end
-# ==============================
+
+def successful_message(nick, message)
+    return system("notify-send", nick, message)
+end
 
 
 # ==============================
@@ -51,41 +62,30 @@ end
 def weechat_init
   unless have_dependencies?
     Weechat.print("'notify-send' command not found")
+    Weechat.print("please be sure that libnotify is installed")
     return Weechat::WEECHAT_RC_ERROR
   end
 
-  Weechat.register(
-    "varsko",
-    "komidore64",
-    "0.0.4",
-    "GPL3",
-    "a notify-send script for private messages and highlights",
-    "",
-    ""
-  )
+  Weechat.register(TITLE, AUTHOR, VERSION, LICENSE, DESCRIPTION, "", "")
 
   Weechat.hook_print("", "", "", 1, "message_bro", "")
 
   return Weechat::WEECHAT_RC_OK
 end
-# ==============================
 
 
 # ==============================
-# hook
+# message hook
 #
 def message_bro(data, buffer, date, tags, visible, highlight, nick, message)
 
   retval = Weechat::WEECHAT_RC_OK
 
   if is_private_message?(buffer, nick) || is_highlight?(highlight)
-
-    unless system("notify-send", nick, message)
+    unless successful_message(nick, message)
       retval = Weechat::WEECHAT_RC_ERROR
     end
-
   end
 
   return retval
 end
-# ==============================
