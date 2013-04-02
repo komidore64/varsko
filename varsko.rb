@@ -52,7 +52,8 @@ def have_dependencies?
 end
 
 def successful_message(nick, message)
-    return system("notify-send", nick, message)
+  message.gsub!(/[-]/, '-' => '\-') # escape characters
+  return system("notify-send", nick, message)
 end
 
 
