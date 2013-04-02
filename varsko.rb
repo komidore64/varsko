@@ -21,10 +21,15 @@
 #
 # Prerequisites:
 # 1. libnotify installed (or whichever package contains 'notify-send' on your distribution)
+#
+# changelog
+# =========
+# 0.0.6
+# - fixed a bug where messages that looked like command-line arguments where being parsed by notify-send
 
 TITLE       = "varsko"
 AUTHOR      = "komidore64"
-VERSION     = "0.0.5"
+VERSION     = "0.0.6"
 LICENSE     = "GPL3"
 DESCRIPTION = "a notify-send script for private messages and highlights"
 
