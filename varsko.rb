@@ -1,6 +1,8 @@
 # Varsko Weechat Script
-# Receive libnotify notifications when you get a private message or your nick is mentioned
 #
+# Receive libnotify notifications when you get a private message or your nick
+# is mentioned
+
 # Copyright (C) 2013 Adam Price (komidore64[at]gmail[dot]com)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -15,17 +17,28 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
+
+
 # "varsko" is Swedish for "notify" or "warn"
 #
-# Prerequisites:
-# 1. libnotify installed (or whichever package contains 'notify-send' on your distribution)
+# requirements
+# ============
+# 1. libnotify installed (or whichever package contains 'notify-send' on your
+#    distribution)
 #
 # changelog
 # =========
 # 0.0.6
-# - fixed a bug where messages that looked like command-line arguments where being parsed by notify-send
+# - fixed a bug where messages that looked like command-line arguments where
+#   being parsed by notify-send (issue #1)
+#
+# bugs
+# ====
+# If you've come across a bug or error in varsko, please submit a Github issue
+# describing the problem, and what version of varsko you're using the link
+# provided below.
+# https://github.com/komidore64/varsko/issues
+#
 
 TITLE       = "varsko"
 AUTHOR      = "komidore64"
