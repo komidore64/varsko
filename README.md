@@ -16,7 +16,7 @@ If you're just so excited to start using ```varsko``` that you can't wait for it
 2. put it in ```~/.weechat/ruby/```
 3. if you want Weechat to autoload the script on startup, symlink it to ```~/.weechat/ruby/autoload/varsko.rb```
 
-just give me the commands, chief
+"Just give me the commands, chief."
 
 ```bash
 wget -O varsko.rb https://raw.github.com/komidore64/varsko/master/varsko.rb
